@@ -1,0 +1,21 @@
+__pycache__/
+*.pyc
+*.pyo
+.env
+venv/
+*.egg-info/
+
+# Node
+node_modules/
+dist/
+.env.local
+
+# ML
+*.onnx
+*.bin
+*.pt
+ml/data/
+
+# OS
+.DS_Store
+Thumbs.db
