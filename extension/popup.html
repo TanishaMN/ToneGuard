@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ToneGuard</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      width: 300px;
+      background: #1e1e2e;
+      color: #cdd6f4;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      padding: 16px;
+    }
+
+    /* Header */
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid #313244;
+    }
+
+    .logo {
+      font-size: 16px;
+      font-weight: 600;
+      color: #89b4fa;
+    }
+
+    .version {
+      font-size: 11px;
+      color: #7c7f93;
+    }
+
+    /* Toggle switch */
+    .setting-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 14px;
+    }
+
+    .setting-label {
+      font-size: 13px;
+      color: #cdd6f4;
+    }
+
+    .setting-desc {
+      font-size: 11px;
+      color: #7c7f93;
+      margin-top: 2px;
+    }
+
+    .toggle {
+      position: relative;
+      width: 40px;
+      height: 22px;
+    }
+
+    .toggle input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: #313244;
+      border-radius: 22px;
+      transition: 0.3s;
+    }
+
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 16px;
+      width: 16px;
+      left: 3px;
+      bottom: 3px;
+      background: #7c7f93;
+      border-radius: 50%;
+      transition: 0.3s;
+    }
+
+    input:checked + .slider {
+      background: #89b4fa30;
+    }
+
+    input:checked + .slider:before {
+      transform: translateX(18px);
+      background: #89b4fa;
+    }
+
+    /* Sensitivity selector */
+    .sensitivity-row {
+      margin-bottom: 14px;
+    }
+
+    .sensitivity-label {
+      font-size: 13px;
+      color: #cdd6f4;
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    .sensitivity-btns {
+      display: flex;
+      gap: 6px;
+    }
+
+    .sens-btn {
+      flex: 1;
+      padding: 6px;
+      background: #313244;
+      border: 1px solid #45475a;
+      border-radius: 6px;
+      color: #7c7f93;
+      font-size: 12px;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-align: center;
+    }
+
+    .sens-btn.active {
+      background: #89b4fa20;
+      border-color: #89b4fa;
+      color: #89b4fa;
+    }
+
+    /* Status indicator */
+    .status {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 12px;
+      background: #313244;
+      border-radius: 6px;
+      margin-bottom: 14px;
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #a6e3a1;
+    }
+
+    .status-dot.offline {
+      background: #f38ba8;
+    }
+
+    .status-text {
+      font-size: 12px;
+      color: #7c7f93;
+    }
+
+    /* Footer */
+    .footer {
+      padding-top: 12px;
+      border-top: 1px solid #313244;
+      text-align: center;
+    }
+
+    .footer-text {
+      font-size: 11px;
+      color: #45475a;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <span class="logo">ToneGuard</span>
+    <span class="version">v1.0</span>
+  </div>
+
+  <!-- Backend status -->
+  <div class="status">
+    <div class="status-dot" id="status-dot"></div>
+    <span class="status-text" id="status-text">Checking backend...</span>
+  </div>
+
+  <!-- Enable/disable toggle -->
+  <div class="setting-row">
+    <div>
+      <div class="setting-label">Enable ToneGuard</div>
+      <div class="setting-desc">Analyze tone as you type</div>
+    </div>
+    <label class="toggle">
+      <input type="checkbox" id="enabled-toggle" checked>
+      <span class="slider"></span>
+    </label>
+  </div>
+
+  <!-- Sensitivity selector -->
+  <div class="sensitivity-row">
+    <span class="sensitivity-label">Sensitivity</span>
+    <div class="sensitivity-btns">
+      <div class="sens-btn" data-value="low">Low</div>
+      <div class="sens-btn active" data-value="medium">Medium</div>
+      <div class="sens-btn" data-value="high">High</div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span class="footer-text">ToneGuard — communicate better</span>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
