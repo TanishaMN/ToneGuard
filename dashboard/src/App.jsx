@@ -192,12 +192,13 @@ function InstallSection() {
             </div>
           ))}
         </div>
-        <div className="install-cta">
+        <div className="install-cta" style={{ marginTop: "2.5rem" }}>
           <a
             href="https://github.com/TanishaMN/ToneGuard"
             target="_blank"
             rel="noreferrer"
             className="btn-primary"
+            style={{ color: "#ffffff" }}
           >
             Download from GitHub
           </a>
