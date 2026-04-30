@@ -134,7 +134,7 @@ async function analyzeToneOnly(text, input) {
     console.log('ToneGuard: Pre-filter says NEGATIVE — calling backend');
     showLoadingBar();
 
-    const response = await fetch('http://localhost:8000/analyze', {
+    const response = await fetch('https://toneguard-api.onrender.com/analyze', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -176,7 +176,7 @@ async function getSuggestions(text, input) {
       `;
     }
 
-    const response = await fetch('http://localhost:8000/analyze', {
+    const response = await fetch('https://toneguard-api.onrender.com/analyze', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({

@@ -73,7 +73,7 @@ async function checkBackendStatus() {
 
   try {
     // Ping the backend health check endpoint
-    const response = await fetch('http://localhost:8000/health', {
+    const response = await fetch('https://toneguard-api.onrender.com/health', {
       method: 'GET',
     });
 
