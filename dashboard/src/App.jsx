@@ -149,7 +149,7 @@ function InstallSection() {
     {
       num: "01",
       title: "Download the code",
-      desc: <>Go to <a href="https://github.com/TanishaMN/ToneGuard" target="_blank" rel="noreferrer" className="install-link">github.com/TanishaMN/ToneGuard</a> → click the green <strong>Code</strong> button → <strong>Download ZIP</strong> → Extract it</>
+      desc: <>Go to <a href="https://github.com/TanishaMN/ToneGuard" target="_blank" rel="noreferrer" className="install-link" style={{ color: "#ffffff" }}>github.com/TanishaMN/ToneGuard</a> → click the green <strong>Code</strong> button → <strong>Download ZIP</strong> → Extract it</>
     },
     {
       num: "02",
@@ -192,7 +192,7 @@ function InstallSection() {
             </div>
           ))}
         </div>
-        <div className="install-cta" style={{ marginTop: "2.5rem" }}>
+        <div className="install-cta" style={{ marginTop: "2 rem" }}>
           <a
             href="https://github.com/TanishaMN/ToneGuard"
             target="_blank"
