@@ -47,7 +47,7 @@ function Demo() {
     setLoading(true)
     setError(null)
     try {
-      const r = await fetch("http://localhost:8000/analyze", {
+      const r = await fetch("https://toneguard-api.onrender.com/analyze", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ text, get_suggestions: true })
@@ -56,7 +56,7 @@ function Demo() {
       const data = await r.json()
       setResult(data)
     } catch (e) {
-      setError("Backend not running. Start it with: uvicorn main:app --port 8000")
+      setError("Could not reach the backend. Please try again in a moment.")
     }
     setLoading(false)
   }
@@ -74,7 +74,6 @@ function Demo() {
         <h2 className="section-title">Try it live</h2>
         <p className="section-sub">Type any message and see ToneGuard analyze it in real time</p>
 
-        {/* Change 3B — Banner above demo box */}
         <div className="demo-banner">
           <span className="demo-banner-icon">🔌</span>
           <span>You are using the web demo. Install the Chrome extension for real-time detection as you type — with one-click message replacement.</span>
@@ -131,7 +130,6 @@ function Demo() {
                     </div>
                   ))}
 
-                  {/* Change 3C — Install note below results */}
                   <div className="install-note">
                     <span className="install-note-icon">💡</span>
                     <span>Install the Chrome extension to automatically replace your message with one click — works on Gmail, Slack, LinkedIn and more.</span>
@@ -140,6 +138,69 @@ function Demo() {
               )}
             </div>
           )}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+function InstallSection() {
+  const steps = [
+    {
+      num: "01",
+      title: "Download the code",
+      desc: <>Go to <a href="https://github.com/TanishaMN/ToneGuard" target="_blank" rel="noreferrer" className="install-link">github.com/TanishaMN/ToneGuard</a> → click the green <strong>Code</strong> button → <strong>Download ZIP</strong> → Extract it</>
+    },
+    {
+      num: "02",
+      title: "Open Chrome Extensions",
+      desc: <>Type <strong>chrome://extensions</strong> in your Chrome address bar and press Enter</>
+    },
+    {
+      num: "03",
+      title: "Enable Developer Mode",
+      desc: <>Toggle <strong>Developer mode</strong> ON in the top right corner</>
+    },
+    {
+      num: "04",
+      title: "Load the extension",
+      desc: <>Click <strong>Load unpacked</strong> → Select the <strong>extension</strong> folder from the extracted ZIP</>
+    },
+    {
+      num: "05",
+      title: "Pin ToneGuard",
+      desc: <>Click the puzzle piece icon in your Chrome toolbar → Pin <strong>ToneGuard</strong></>
+    },
+    {
+      num: "06",
+      title: "You're done!",
+      desc: <>Open <strong>Gmail</strong> and type any message. Wait 2.5 seconds — ToneGuard appears automatically.</>
+    },
+  ]
+
+  return (
+    <section className="install-section" id="install">
+      <div className="container">
+        <h2 className="section-title">Install ToneGuard</h2>
+        <p className="section-sub">Free forever · No account needed · Takes 2 minutes</p>
+        <div className="steps-grid">
+          {steps.map((s, i) => (
+            <div key={i} className="step-card">
+              <div className="step-num">{s.num}</div>
+              <h3 className="step-title">{s.title}</h3>
+              <p className="step-desc">{s.desc}</p>
+            </div>
+          ))}
+        </div>
+        <div className="install-cta">
+          <a
+            href="https://github.com/TanishaMN/ToneGuard"
+            target="_blank"
+            rel="noreferrer"
+            className="btn-primary"
+          >
+            Download from GitHub
+          </a>
         </div>
       </div>
     </section>
@@ -155,8 +216,8 @@ export default function App() {
           <span className="nav-logo">ToneGuard</span>
           <div className="nav-links">
             <a href="#how">How it works</a>
-            <a href="#demo">Demo</a>
             <a href="#features">Features</a>
+            <a href="#install">Install</a>
           </div>
           <a href="#demo" className="nav-cta">Try Demo</a>
         </div>
@@ -214,7 +275,6 @@ export default function App() {
               {
                 num: "03",
                 title: "Send with confidence",
-                /* Change 3A — updated step 3 description */
                 desc: "Choose from 3 professionally rewritten alternatives. Click 'Use this' in the extension to instantly replace your message — no copy-paste needed."
               },
             ].map((s, i) => (
@@ -237,7 +297,6 @@ export default function App() {
           <h2 className="section-title">Everything you need</h2>
           <p className="section-sub">Built for professionals who communicate every day</p>
           <div className="features-grid">
-            {/* Change 1 — removed emojis */}
             {[
               { title: "Real-time detection", desc: "Analyzes your tone as you type — no button needed." },
               { title: "6 tone categories", desc: "Detects anger, sarcasm, passive-aggression, warmth, neutral and assertive." },
@@ -255,11 +314,22 @@ export default function App() {
         </div>
       </section>
 
+      {/* Installation Instructions */}
+      <InstallSection />
+
       {/* Footer */}
       <footer className="footer">
         <div className="container">
           <span className="footer-logo">ToneGuard</span>
           <p className="footer-text">Communicate better with AI — free forever.</p>
+          <a
+            href="https://github.com/TanishaMN/ToneGuard"
+            target="_blank"
+            rel="noreferrer"
+            className="footer-link"
+          >
+            GitHub →
+          </a>
         </div>
       </footer>
     </div>
