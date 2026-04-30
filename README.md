@@ -64,7 +64,7 @@ Open Gmail and type any message. Wait 2.5 seconds. ToneGuard appears automatical
 
 ## Live Demo
 
-Dashboard: coming soon
+Dashboard: https://tone-guard.vercel.app
 
 ---
 
