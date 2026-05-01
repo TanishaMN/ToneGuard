@@ -59,6 +59,7 @@ function attachToInputs() {
     if (input.dataset.toneguardAttached) return;
     input.dataset.toneguardAttached = 'true';
     input.addEventListener('input', () => handleTyping(input));
+    input.addEventListener('keyup', () => handleTyping(input));
     input.addEventListener('focus', () => { currentInput = input; });
     input.addEventListener('blur', () => {
       // small delay so click on tone bar doesn't close it
