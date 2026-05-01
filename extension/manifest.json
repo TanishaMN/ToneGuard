@@ -10,7 +10,7 @@
   ],
 
   "host_permissions": [
-    "http://localhost:8000/*"
+    "https://toneguard-api.onrender.com/*"
   ],
 
   "background": {
